@@ -4,7 +4,7 @@ import random, string
 import os
 
 BOT_TOKEN = os.getenv("8735784393:AAEbpsRBta0mwaTSGAc5kQbNFBXBypANg0U")
-API_ID = int(os.getenv("16706914"))
+API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("a1c46c51a69779cc4e72eebf2432f86c")
 CHANNEL_ID = int(os.getenv("-1003810735470"))
 
