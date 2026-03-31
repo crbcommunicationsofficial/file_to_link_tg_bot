@@ -3,16 +3,17 @@ import pymysql
 import random, string
 import os
 
-BOT_TOKEN = os.getenv("8735784393:AAEbpsRBta0mwaTSGAc5kQbNFBXBypANg0U")
+# ✅ Environment variables read correctly
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_ID = int(os.getenv("API_ID"))
-API_HASH = os.getenv("a1c46c51a69779cc4e72eebf2432f86c")
-CHANNEL_ID = int(os.getenv("-1003810735470"))
+API_HASH = os.getenv("API_HASH")
+CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
 db = pymysql.connect(
-    host=os.getenv("crbcs.in"),
-    user=os.getenv("bvrqedsu_file_to_link_tg_bot"),
-    password=os.getenv("9938195105@Maa"),
-    database=os.getenv("bvrqedsu_file_to_link_tg_bot")
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASS"),
+    database=os.getenv("DB_NAME")
 )
 cursor = db.cursor()
 
@@ -24,7 +25,6 @@ def generate_id():
 @app.on_message(filters.private & filters.media)
 async def save_file(client, message):
     sent = await message.copy(CHANNEL_ID)
-
     unique_id = generate_id()
 
     cursor.execute(
